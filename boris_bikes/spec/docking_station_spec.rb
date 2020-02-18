@@ -8,4 +8,9 @@ it ' releases working bikes' do
 	expect(bike).to be_working
 	end
 
+it ' the public will be able to dock bikes after use' do
+	bike = subject.dock_bike
+	expect(bike).to be_docked
+end
+
 end
