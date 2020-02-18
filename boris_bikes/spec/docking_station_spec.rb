@@ -10,4 +10,6 @@ it ' releases working bikes' do
 
 it { is_expected.to respond_to(:dock_bike).with(1).argument }
 
+it { is_expected.to respond_to(:bike) }
+
 end

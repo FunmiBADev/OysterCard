@@ -7,6 +7,7 @@ it "responds to working?" do
 
 it " responds to dock bike" do
 	expect(subject).respond_to? :dock_bike
+	end
+	
 end
 
-end
