@@ -22,11 +22,19 @@ it 'releases a bike' do
 end
 end
 
+describe "#dock_bike" do 
+	it "raises an erro when full" do
+		subject.dock_bike(Bike.new)
+		expect{ subject.dock_bike Bike.new }.to raise_error "Docking station full"
+	end
+end
+
+
 it { is_expected.to respond_to(:dock_bike).with(1).argument }
 
 it "docks something" do
 	bike = Bike.new
-	# we want ti return the bike to the docking station
+	# we want to return the bike to the docking station
 	expect(subject.dock_bike(bike)).to eq (bike)
 end
 
