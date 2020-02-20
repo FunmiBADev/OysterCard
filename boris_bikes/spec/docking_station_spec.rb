@@ -15,14 +15,14 @@ it " raises an error when there are no bike available" do
 end
 
 it 'does not release broken bikes' do
-	bike = Bike.new
+	bike = double :bike
 	bike.report_broken
 	subject.dock_bike (bike)
 	expect { subject.release_bike }.to raise_error "Faulty bike try another if available"
 end
 
-it 'releases a bike' do
-	bike = Bike.new
+it 'releases a working bike' do
+	bike = double :bike
 	subject.dock_bike bike
 	expect(subject.release_bike).to eq bike
 end
@@ -31,22 +31,22 @@ end
 describe "#dock_bike" do
 	it "raises an error when full" do
 		subject.capacity.times do
-			subject.dock_bike Bike.new
+			subject.dock_bike double :bike
 		end
-		expect{ subject.dock_bike Bike.new }.to raise_error "Docking station full"
+		expect{ subject.dock_bike double :bike }.to raise_error "Docking station full"
 	end
 end
 
 it { is_expected.to respond_to(:dock_bike).with(1).argument }
 it "docks something" do
-	bike = Bike.new
+	bike = double :bike
 	# we want to return the bike to the docking station
 	expect(subject.dock_bike (bike)).to eq [bike]
 end
 
 it { is_expected.to respond_to(:bikes) }
 it "returns docked bikes" do
-	bike = Bike.new
+	bike = double :bike
 	subject.dock_bike (bike)
 	expect(subject.bikes).to eq [bike]
 end
