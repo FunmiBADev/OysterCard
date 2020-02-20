@@ -29,6 +29,7 @@ it 'releases a working bike' do
 end
 end
 
+<<<<<<< HEAD
 describe "#dock_bike" do
 	it "raises an error when full" do
 		subject.capacity.times do
@@ -36,6 +37,22 @@ describe "#dock_bike" do
 		end
 		expect{ subject.dock_bike double :bike }.to raise_error "Docking station full"
 	end
+=======
+describe "#dock_bike" do 
+	it "raises an error when full" do
+		20.times { subject.dock_bike Bike.new }
+		expect { subject.dock_bike Bike.new }.to raise_error "Docking station full"
+	end
+end
+
+
+it { is_expected.to respond_to(:dock_bike).with(1).argument }
+
+it "docks something" do
+	bike = Bike.new
+	# we want to return the bike to the docking station
+	expect(subject.dock_bike(bike)).to eq (bike)
+>>>>>>> c98dc58decaa9eb033aacaf7347305836091fc80
 end
 
 it { is_expected.to respond_to(:dock_bike).with(1).argument }
