@@ -8,6 +8,11 @@ it "responds to working?" do
 it " responds to dock bike" do
 	expect(subject).respond_to? :dock_bike
 	end
+
+it "can be reported broken" do
+	subject.report_broken
+	expect(subject).to be_broken
+end
 	
 end
 
