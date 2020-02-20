@@ -15,14 +15,15 @@ it " raises an error when there are no bike available" do
 end
 
 it 'does not release broken bikes' do
-	bike = double :bike
-	bike.report_broken
-	subject.dock_bike (bike)
+	bike = double(:bike, broken?: true)
+	# allow(bike).to receive(:broken?).and_return(true)
+	subject.dock_bike bike
 	expect { subject.release_bike }.to raise_error "Faulty bike try another if available"
 end
 
 it 'releases a working bike' do
-	bike = double :bike
+	bike = double(:bike, broken?: false)
+	# allow(bike).to receive(:broken?).and_return(false)
 	subject.dock_bike bike
 	expect(subject.release_bike).to eq bike
 end
