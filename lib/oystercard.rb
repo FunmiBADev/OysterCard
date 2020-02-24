@@ -13,7 +13,7 @@ class Oystercard
 	end
 
 	def load(money)
-		balance = balance += money
+		@balance = @balance += money
 	end
 
 
