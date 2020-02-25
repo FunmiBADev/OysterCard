@@ -7,6 +7,7 @@ class Oystercard
 	def initialize(max_bal = MAX_BAL)
 		@balance = 0
 		@max_bal = max_bal
+		@start_trip = false
 
 	end
 
@@ -25,7 +26,12 @@ class Oystercard
 	 end
 
 	 def in_journey?
-	 	false
+	  return @start_trip ? true : false
+	 end
+
+	 def touch_in
+	 	@start_trip = true
+
 	 end
 
 
