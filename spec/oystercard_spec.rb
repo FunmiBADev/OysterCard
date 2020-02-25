@@ -24,9 +24,13 @@ describe Oystercard do
 
 	end
 
-	it "Can deduct money from the balance" do 
+	it "Can deduct money from the card" do 
 		card = Oystercard.new
 		expect(card).to respond_to(:deduct).with(1).argument
+	end
+
+	it "Can deduct the balance" do 
+		expect{ subject.deduct -5 }.to change{ subject.balance }.by 5
 	end
 
 	it "start off not in Journey" do 
@@ -40,12 +44,14 @@ describe Oystercard do
 	it "Can allow touch_in to start Journey" do 
 		subject.load(5) 
 		subject.touch_in
+		expect{ subject.touch_out}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
 		expect(subject).to be_in_journey
 	end
 
 	it "can allow touch_out to end Journey" do 
 		subject.load(5)
 		subject.touch_in
+		expect{ subject.touch_out}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
 		subject.touch_out
 		expect(subject).not_to be_in_journey
 	end

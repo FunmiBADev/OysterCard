@@ -3,12 +3,14 @@ class Oystercard
 	attr_reader :balance
 	MAX_BAL = 90
 	MIN_BAL = 3.50
+	MIN_FARE = 4.75
 
 
-	def initialize(max_bal = MAX_BAL, min_bal = MIN_BAL)
+	def initialize(max_bal = MAX_BAL, min_bal = MIN_BAL, min_fare = MIN_FARE)
 		@balance = 0
 		@max_bal = max_bal 
 		@min_bal = min_bal
+		@min_fare = min_fare
 		# @start_trip = false
 
 	end
