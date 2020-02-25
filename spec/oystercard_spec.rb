@@ -20,7 +20,7 @@ describe Oystercard do
 	it "raises an error if balance exceeds £90" do
 		max_bal = Oystercard::MAX_BAL
 		subject.load(max_bal)
-		expect{ subject.load 1 }.to raise_error "Max balance exceeded!"
+		expect{ subject.load 30 }.to raise_error "Max balance of #{max_bal} exceeded!"
 
 	end
 

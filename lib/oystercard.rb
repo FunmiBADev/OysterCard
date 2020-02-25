@@ -4,8 +4,9 @@ class Oystercard
 	MAX_BAL = 90
 
 
-	def initialize
+	def initialize(max_bal = MAX_BAL)
 		@balance = 0
+		@max_bal = max_bal
 
 	end
 
@@ -14,7 +15,7 @@ class Oystercard
 	end
 
 	def load(money)
-		fail "Max balance exceeded!" if money + balance > MAX_BAL
+		fail "Max balance of #{@max_bal} exceeded!" if money + balance > MAX_BAL
 		@balance += money
 	 end
 
