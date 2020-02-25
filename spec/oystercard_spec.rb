@@ -33,6 +33,10 @@ describe Oystercard do
 		expect(subject).not_to be_in_journey
 	end
 
+	it "blocks starting Journey if below minimum balance" do 
+		expect{ subject.touch_in }.to raise_error "Insuffcient balance to start Journey"
+	end
+
 	it "Can allow touch_in to start Journey" do 
 		subject.touch_in
 		expect(subject).to be_in_journey
