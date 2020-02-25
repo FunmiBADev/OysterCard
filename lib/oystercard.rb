@@ -24,15 +24,22 @@ class Oystercard
 	  @balance -= money
 	 	
 	 end
+	 	 def touch_in
+	 	@start_trip = true
 
+	 end
+
+	 	 def touch_out
+	 	@start_trip = false
+
+	 end
+
+	
 	 def in_journey?
 	  return @start_trip ? true : false
 	 end
 
-	 def touch_in
-	 	@start_trip = true
 
-	 end
 
 
 end
