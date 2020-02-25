@@ -24,4 +24,9 @@ describe Oystercard do
 
 	end
 
+	it "Can deduct money from the balance" do 
+		card = Oystercard.new
+		expect(card).to respond_to(:deduct).with(1).argument
+	end
+
 end
