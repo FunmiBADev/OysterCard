@@ -36,6 +36,7 @@ class Oystercard
 	 end
 
 	 	 def touch_out
+	 	 	deduct(MIN_FARE)
 	 	@start_trip = false
 
 	 end

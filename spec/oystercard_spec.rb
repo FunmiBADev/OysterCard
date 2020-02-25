@@ -44,7 +44,6 @@ describe Oystercard do
 	it "Can allow touch_in to start Journey" do 
 		subject.load(5) 
 		subject.touch_in
-		expect{ subject.touch_out}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
 		expect(subject).to be_in_journey
 	end
 
