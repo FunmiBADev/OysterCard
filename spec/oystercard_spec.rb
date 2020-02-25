@@ -29,4 +29,8 @@ describe Oystercard do
 		expect(card).to respond_to(:deduct).with(1).argument
 	end
 
+	it "start off not in Journey" do 
+		expect(subject).not_to be_in_journey
+	end
+
 end
