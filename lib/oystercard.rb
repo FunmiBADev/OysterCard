@@ -6,8 +6,8 @@ class Oystercard
 
 	def initialize(max_bal = MAX_BAL)
 		@balance = 0
-		@max_bal = max_bal
-		@start_trip = false
+		@max_bal = max_bal 
+		# @start_trip = false
 
 	end
 
@@ -24,8 +24,10 @@ class Oystercard
 	  @balance -= money
 	 	
 	 end
+
 	 	 def touch_in
-	 	@start_trip = true
+	 	 fail "Insuffcient balance to start Journey" if balance < 1
+	 	 @start_trip = true
 
 	 end
 
@@ -36,7 +38,8 @@ class Oystercard
 
 	
 	 def in_journey?
-	  return @start_trip ? true : false
+	 	@start_trip
+	   # @start_trip ? true : false
 	 end
 
 

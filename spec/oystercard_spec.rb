@@ -38,11 +38,13 @@ describe Oystercard do
 	end
 
 	it "Can allow touch_in to start Journey" do 
+		subject.load(5) 
 		subject.touch_in
 		expect(subject).to be_in_journey
 	end
 
 	it "can allow touch_out to end Journey" do 
+		subject.load(5)
 		subject.touch_in
 		subject.touch_out
 		expect(subject).not_to be_in_journey
