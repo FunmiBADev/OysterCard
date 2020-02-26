@@ -49,9 +49,9 @@ describe Oystercard do
 
 	it "can allow touch_out to end Journey" do 
 		subject.load(5)
-		subject.touch_in(station)
-		expect{ subject.touch_out(station)}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
-		subject.touch_out(station)
+		subject.touch_in(entry_station)
+		expect{ subject.touch_out(exit_station)}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
+		subject.touch_out(exit_station)
 		expect(subject).not_to be_in_journey
 	end
 

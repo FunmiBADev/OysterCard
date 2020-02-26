@@ -11,7 +11,7 @@ class Oystercard
 		@max_bal = max_bal 
 		@min_bal = min_bal
 		@min_fare = min_fare
-		@journeys = {}
+		@journeys = []
 
 	end
 
@@ -29,18 +29,22 @@ class Oystercard
 	 	
 	 end
 
-	 	 def touch_in(station)
+	 	 def touch_in(entry_station)
 	 	 fail "Insuffcient balance to start Journey" if balance < MIN_FARE
 	 	 # @start_trip = true
-	 	 @entry_station = station
+	 	 @entry_station = entry_station
+	 	
 
 	 end
 
-	 	 def touch_out(station)
+	 	 def touch_out(exit_station)
 	 	 	deduct(MIN_FARE)
 	 	# @start_trip = false
+	 	@entry_station = entry_station
+	 	@exit_station = exit_station
+	 	@journeys.push( {entry_station: entry_station, exit_station: exit_station})
 	 	@entry_station = nil
-	 	@exit_station = station
+
 
 	 end
 
