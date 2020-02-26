@@ -1,6 +1,6 @@
 
 class Oystercard
-	attr_reader :balance
+	attr_reader :balance, :entry_station
 	MAX_BAL = 90
 	MIN_BAL = 3.50
 	MIN_FARE = 4.75
@@ -30,24 +30,24 @@ class Oystercard
 	 end
 
 	 	 def touch_in(station)
-	 	 fail "Insuffcient balance to start Journey" if balance < MIN_BAL
-	 	 @start_trip = true
+	 	 fail "Insuffcient balance to start Journey" if balance < MIN_FARE
+	 	 # @start_trip = true
+	 	 @entry_station = station
 
 	 end
 
 	 	 def touch_out(station)
 	 	 	deduct(MIN_FARE)
-	 	@start_trip = false
+	 	# @start_trip = false
+	 	@entry_station = nil
 
 	 end
 
 	
 	 def in_journey?
-	 	@start_trip
+	 	# @start_trip
 	   # @start_trip ? true : false
+	   !!entry_station
 	 end
-
-
-
 
 end
