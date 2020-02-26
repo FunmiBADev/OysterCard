@@ -51,8 +51,5 @@ class Oystercard
 	   !!entry_station
 	 end
 
-	 def journeys
-	 	@journeys
-	 end
 
 end
