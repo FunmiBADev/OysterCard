@@ -62,4 +62,13 @@ describe Oystercard do
 		expect(subject.entry_station).to eq station
 	end
 
+	let(:entry_station) {double :station}
+	let(:exit_station) {double :station}
+	it "stores exit station" do 
+		subject.load(25)
+		subject.touch_in(entry_station)
+		subject.touch_out(exit_station)
+		expect(subject.exit_station).to eq exit_station
+	end
+
 end
