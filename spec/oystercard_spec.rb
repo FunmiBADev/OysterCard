@@ -38,21 +38,27 @@ describe Oystercard do
 	end
 
 	it "blocks starting Journey if below minimum balance" do 
-		expect{ subject.touch_in }.to raise_error "Insuffcient balance to start Journey"
+		expect{ subject.touch_in(station) }.to raise_error "Insuffcient balance to start Journey"
 	end
 
 	it "Can allow touch_in to start Journey" do 
 		subject.load(5) 
-		subject.touch_in
+		subject.touch_in(station)
 		expect(subject).to be_in_journey
 	end
 
 	it "can allow touch_out to end Journey" do 
 		subject.load(5)
-		subject.touch_in
-		expect{ subject.touch_out}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
-		subject.touch_out
+		subject.touch_in(station)
+		expect{ subject.touch_out(station)}.to change{ subject.balance }.by(-Oystercard::MIN_FARE)
+		subject.touch_out(station)
 		expect(subject).not_to be_in_journey
+	end
+
+	let(:station){double :station}
+	it "stores the entry station" do 
+		subject.touch_in(station)
+		expect(subject.entry_station).to eq station
 	end
 
 end
