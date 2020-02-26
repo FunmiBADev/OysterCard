@@ -71,4 +71,8 @@ describe Oystercard do
 		expect(subject.exit_station).to eq exit_station
 	end
 
+	it "has an empty list of journey by default" do 
+		expect(subject.journeys).to be_empty
+	end
+
 end
