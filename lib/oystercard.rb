@@ -1,9 +1,10 @@
 
 class Oystercard
-	attr_reader :balance, :entry_station
+	attr_reader :balance, :entry_station, :exit_station
 	MAX_BAL = 90
 	MIN_BAL = 3.50
 	MIN_FARE = 4.75
+	all_journeys ={}
 
 
 	def initialize(max_bal = MAX_BAL, min_bal = MIN_BAL, min_fare = MIN_FARE)
@@ -40,6 +41,7 @@ class Oystercard
 	 	 	deduct(MIN_FARE)
 	 	# @start_trip = false
 	 	@entry_station = nil
+	 	@exit_station = station
 
 	 end
 
