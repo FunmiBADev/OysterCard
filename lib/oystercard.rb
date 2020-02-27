@@ -1,3 +1,5 @@
+require_relative "journey_log"
+require_relative "station"
 
 class Oystercard
 	attr_reader :balance, :entry_station, :exit_station, :journeys
@@ -24,9 +26,6 @@ class Oystercard
 		@balance += money
 	 end
 
-	 def deduct(money)
-	  @balance -= money
-	 	
 	 end
 
 	def touch_in(entry_station)
@@ -34,7 +33,6 @@ class Oystercard
 	 	 # @start_trip = true
 	 	 @entry_station = entry_station
 	 	
-
 	end
 
 	def touch_out(exit_station)
@@ -45,9 +43,7 @@ class Oystercard
 	 	@journeys.push( {entry_station: entry_station, exit_station: exit_station})
 	 	@entry_station = nil
 
-
 	end
-
 	
 	def in_journey?
 	 	# @start_trip
@@ -55,5 +51,8 @@ class Oystercard
 	   !!entry_station
 	end
 
+private
+ def deduct(money)
+	  @balance -= money
 
 end

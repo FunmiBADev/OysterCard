@@ -1,3 +1,6 @@
+require_relative "journey_log"
+require_relative "oystercard"
+
 
 class Station
 	attr_reader :name, :zone 
@@ -8,13 +11,5 @@ class Station
 		@zone = zone
 		
 	end
-
-	# def name
-	# 	@name
-	# end
-
-	# def zone
-	# 	@zone
-	# end
 
 end
